@@ -1,0 +1,81 @@
+Sinatra Intro
+Install gems first 
+Require gems
+Inner web browser: localhost:4567
+
+Sinatra code break down:
+
+Get ‘/’ do 
+	“Hello world”
+End
+
+Root domain: http://www.dbc.com/ 
+Roots: either return a string or redirects to another root
+
+Ordering of routes: place very specific routes before the wildcard/capturing routes
+
+ERB:
+embedded ruby
+can have a text file and embed ruby inside of it and create a dynamic text file 
+Views: templates that allow us to render HTML files 
+Erb is a method that takes an argument
+erb :greeting
+
+Snowcone Notations:
+<%= %> - will execute ruby code and print something out to the console
+<% %> - normal notation. Use when you want to execute ruby code but don’t want to output anything. Will want to use with loops where you don’t want to return anything to the console
+
+@:
+Need to explicitly assign @ to variables to be able to access them in erb files
+
+
+GET & POST:
+Sinatra verbs
+All redirects are GET requests
+
+Common Sinatra Mistakes:
+Don’t forget the forward slash at the beginning of your values
+Use the double quotes when doing string interpolation
+Remember that params do not carry over in a redirect
+The last thing executed in Ruby is what gets returned
+You cannot make POST request in a link 
+When in doubt restart the server
+To kill zombie servers: ps aux/grep shotgun, kill -9 process_id
+If you cant see something, make sure its <%= instead of <%
+DO NOT RETURN INTEGERS. Convert to a string first
+If it’s a void error change function names
+Ordering of routes matter
+You cannot access params directly from erb files
+
+
+Connecting Sinatra & Databases:
+Install gems
+Set up an MVC environment
+Controller
+Create a directory called controllers
+Connect files in controllers to rb file using require_relative
+Model
+Create a directory called models
+Create class and connect it to  < ActiveRecord::Base
+Sets it up so when you create a database the model can interact with it
+Connect files in models to rb file using require_relative
+View
+Create a directory called views
+Create erb files
+
+Establish Connection to the Database: 
+
+This will always be given to you
+APP_ROOT
++APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
++
++# Configure the database
++database_config = { :adapter  =>  "sqlite3",
++                    :database => "#{APP_ROOT}/db/todoolittle.sqlite3" }
++
++ActiveRecord::Base.establish_connection(database_config)
+
+Migrating: 
+Create a migrate directory 
+***Migrating allows you to make incremental changes without deleting the entire database, and it tracks the changes so you can rollback changes when needed***
+Executing migrations: 
