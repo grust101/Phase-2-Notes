@@ -1,3 +1,39 @@
+Q: when you order an event by date as a string how does it know that it's a date?
+
+
+Submitting a Form & posting the content to a page
+
+POST w/ .create
+**** ON EVERY POST YOU NEED A REDIRECT
+post '/events' do 
+  @event = Event.create(title: params[:title], host: params[:host], date: params[:date])
+  redirect "/events/#{@event.id}"
+end
+
+POST w/ .new & .save
+
+post '/events' do 
+  @event = Event.new(title: params[:title], host: params[:host], date: params[:date])
+  if @event.save
+    redirect "/events/#{@event.id}"
+  else
+    p did not save
+  end
+  
+end
+
+Form : 
+action - where you're going to go 
+
+Partial Form: 
+erb file name : _filename
+<=% erb: :'_form', layout: false %>
+connects to a _form erb page to submit params, and does not reload layout: page
+
+
+UPDATE: 
+
+
 CRUD Notes
 
 C.reate
@@ -15,6 +51,7 @@ Create:
 
 create in a post method by using .create OR .new & .save
 *** if you dont have a validation it will not save to your database
+*** w/ .new : ids will be nil until you .save to the database
 
 Summary: create & validate OR new & save
 
@@ -23,9 +60,17 @@ Update:
 update using a put method and .find to find the param you want to change and then change that param and save
 OR using update_attributes
 
+*** put is like post and on every post you need to redirect
+put '/events/:id do
+  event = Event.find(params[:id]
+  @event = event.update(title: params[:title], host: params[:host], date: params[:date])
+  redirect "/events/#{@event.id}"
+end
+
 Read: 
 
 read using a get method and using find OR find_by OR .all OR .where
+find VS. find_by: find_by is for any attribute find_by(id: 1) - find only finds an integer .find(1)
 
 Delete: 
 
