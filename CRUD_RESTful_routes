@@ -1,0 +1,99 @@
+CRUD Notes
+
+C.reate
+R.ead
+U.pdate
+D.elete
+
+Create = POST
+Read = GET
+Update = PUT/PATCH
+Delete = DELETE
+
+
+Create: 
+
+create in a post method by using .create OR .new & .save
+*** if you dont have a validation it will not save to your database
+
+Summary: create & validate OR new & save
+
+Update: 
+
+update using a put method and .find to find the param you want to change and then change that param and save
+OR using update_attributes
+
+Read: 
+
+read using a get method and using find OR find_by OR .all OR .where
+
+Delete: 
+
+delete using a delete method annd using .find & .destroy
+
+BUT: modern day web browsers do not support put OR delete http requests
+
+
+RESTFUL Routes
+REST (Representational State Transfer)
+
+CRUD        Request          Path               Purpose
+
+Read        Get             /hello              list hello
+Read        Get             /hello/new          form of new hello
+Create      Post            /hello              new hello
+Read        Get             /hello/:id          specific hello
+Read        Get             /hello/:id/edit     edit form
+Update      Put             /hello/:id          update hello
+Delete      Delete          /hello/:id          delete hello
+
+
+Rest Conventions: 
+1. are more organized
+2. are the best practices
+3. are clean & simple
+4. are one less thing to think about
+
+
+Nested Resources
+
+CRUD        Request          Path                                      Purpose
+
+Read        Get             greeting/:greeting_id/hello              list hello for a greeting
+Read        Get             greeting/:greeting_id/hello/new          return form of new hello belonging to a greeting
+Create      Post            greeting/:greeting_id/hello              new hello belonging to a greeting
+Read        Get             greeting/:greeting_id/hello/:id          specific hello belonging to a greeting
+Read        Get             greeting/:greeting_id/hello/:id/edit     edit form for editing hello belonging to a greeting
+Update      Put             greeting/:greeting_id/hello/:id          update specific hello belonging to a greeting
+Delete      Delete          greeting/:greeting_id/hello/:id          delete specific hello belonging to a greeting
+
+Writing Put & Delete in Sinatra
+***write these methods as post methods using the name _method & the value "put" OR "delete"
+PUT 
+<form method= "post" action="dogs/<%= @dog.id %>">
+  <input type="hidden" name="_method" value="put"
+  ****continue form *****
+  </form>
+
+DELETE
+<form method= "post" action="dogs/<%= @dog.id %>">
+  <input type="hidden" name="_method" value="put"
+  ****continue form *****
+  </form>
+
+
+Steps when using CRUD
+*** ONLY CREATE THE ROUTES THAT YOU NEED. ***
+1. Create a new controller file
+2. Create a view folder
+3. Create the index route & view
+4. Create the show route & view
+5. Create the new route & view & the create route
+6. Create the edit route & view & the update route
+7. Create the delelte route & view
+
+
+Craigslist Notes: 
+
+Wireframe: page schema/blueprint for your website 
+
