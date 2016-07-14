@@ -1,0 +1,20 @@
+Group Git Workflow
+
+1. Fork repo to your own github (one person when starting)
+2. Add all team members as contributors
+3. work work work work
+4. ALWAYS ALWAYS CHECK WITH TEAM BEFORE A MERGE. 
+    ALWAYS. Merge as a team
+5. Don't merge your own code
+  - ask team members to review
+  - Check in periods/ code freeze
+6. Feature branches -> user stories -> trello!
+
+Individual Commits
+- each file for individual/ unreleated feature changes
+
+Proper Messages: 
+- Pull request -> summary 
+- Individual commits tell the story 
+  - present tense verbs
+  -be professional 
