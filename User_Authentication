@@ -1,0 +1,91 @@
+User Authentication Breakout 
+
+Sessions: Why?
+- we want to persist state accross mulitple pages
+- we want log in info to be persistant accross pages so they don't have to keep logging in
+
+Other ways to persist state (other than sessions)
+- redirect using a query string ex : /welcome/?id=#{@id}
+- store id as an instance variable
+SECURITY ISSUE: id is exposed in URL 
+
+
+STATELESS WEB
+
+Client -> request -> Server
+  ^                     |
+  |                     |
+   ---------------------  
+   
+   
+PERSISTING STATE 
+
+Client --->----> Request -->---->Server
+  ^                               |
+  |                               |
+   <----+SESSION COOKIE 1+-------<
+   
+   ***session cookie is excrypted***
+   
+   
+   
+  Client -->---> Request (w/ SESSION COOKIE 1) ---->--> Server
+  ^                                                       |
+  ^                                                       |
+  |                                                       |
+   <------<----+SESSION COOKIE 1 OR NEW COOKIE+----<-----<
+
+ 
+ Cookies can be changed on the client and servers
+ 
+BCrypt
+- you cannot store plain text passwords into a database - need to encrypt them  
+-
+Creating a new user
+- User.create(username: Georgia, password: "123"
+- when you create a user it breaks it down into step
+  1. u = User.new()
+  2. u.username = "Georgia"
+  3. u.password = "123"
+  4. u.save
+-bcrypt accesses this process at step 3
+  def password 
+    1. encrypt
+    2. sets password_hash field
+    3. u.password_hash = encrypted version
+    
+- save password as anything other than :password in your table
+- bcrypt will take your password and encrypt it 
+
+
+Memoization: ||= (lazy valuation)
+if something already has a value other than nil, return the value. 
+But is something is nil or has no value, reassign the value
+
+Sessions:
+
+- enable it in environment
+- create sessions controller file
+- simple route 
+  get '/' do
+  "hello"
+  end
+- make sure it's working
+- change simple route
+  get '/' do
+  "hello"
+  end
+- create an index.erb file for sessions
+- write log-in & register buttons on layout page so that it's an option on every page
+- go back to sessions controller
+-write get methods for log-in and register
+get '/register' do 
+  erb :'user/new'
+end
+
+
+
+
+
+  
+ 
