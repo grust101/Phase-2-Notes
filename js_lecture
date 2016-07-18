@@ -1,0 +1,143 @@
+Making objects: 
+
+2 ways:
+
+1. Constructor: example 1: 
+function myObject(){
+  this.iAm = 'an object';
+  this.whatAmI = function() {
+    alert( 'I am ' + this.iAm = ".");
+    };
+  };
+  
+  myNewObject = new myObject();
+  console.log("I'm the Constructor! I return: " + myNewObject.whatAmI());
+
+
+1. Constructor example 2:
+
+function myObject(word){
+  this.iAm = 'an object';
+  this.whatAmI = function() {
+    alert( 'I am ' + this.iAm = ". My flavor is");
+    };
+  };
+  
+  myNewObject = new myObject("Lettuce!");
+  console.log("I'm the Constructor! I return: " + myNewObject.whatAmI("chocolate));
+
+1. Constructor example 3: 
+
+var myObjectConstructor = function(){
+this.myProperty = 'this is my property'
+}
+
+var constructorOne = new myObjectConstructor();
+
+var constructorTwo = new myObjectConstructor();
+
+alert(constructorOne.myProperty);
+
+alert(constructorTwp.myProperty);
+
+2. Object Literal: example 1: 
+
+var myObject = {
+  iAm : 'an object', 
+  whatAmI :function(){
+    alert('I am ' + this.iAm);
+  }
+}
+
+ console.log("I'm the Object Literal! I return: " + myNewObject.whatAmI())
+ 
+
+
+2. Object Literal example 2: 
+
+console.log(myObject.whatAmI());
+
+var myObjectLiteral = {
+  myProperty : 'this is a property'
+  }
+  
+  alert(myObjectLiteral.myProperty);
+  
+  var sameObject = myObjectLiteral; 
+  
+  myObjectLiteral.myProperty = 'this is a new property';
+  
+  alert(myObjectLiteral.myProperty);
+  alert(sameObject.myProperty);
+  
+  ^ because you changed the original you changed the other as well 
+  
+  
+  
+  
+  
+  
+ Why do you need () to execute a function?
+ - functions are 1st class values 
+ - functions are OBJECTS *mic drop*
+- functions can be assigned to variables
+
+
+
+Ruby to JS
+
+Ruby example: 
+
+class Teacher
+  attr_accessor :first_name, :last_name
+  
+  def initialize(args={})
+  @first_name = args[:first_name]
+  @last_name = args[:last_name]
+  end
+  
+  def speak(text)
+    "Hello #{text}"
+  end
+  
+  def full_name 
+  "#{first_name} #{last_name}"
+  end
+end
+
+Teacher.new(first_name: "Greatest", last_name: "Ever")
+
+JS Translation: 
+
+function Teacher(args) {
+// This is saying if there are no args passed in, the default value or args is an empty hash
+	if (! args) {
+		args = {}
+	};
+// This is referencing the args that can be passed in for Teacher
+	this.first_name = args[:first_name];
+	this.last_name = args[:last_name];
+	
+// Can write functions in the class function BUT to optimize performance you want it as a prototype
+	// this.speak = function(text){
+	// 	alert('Hello' + text + "!") 
+	// };
+	// this.fullName = function(){
+	// 	alert(this.firstName + " " + this.lastName)
+	// };
+
+// This is a prototype for Teacher creating a speak function
+	Teacher.prototype.speak = function(text){
+		return "Hello " + text + "!";
+	};
+
+	Teacher.prototype.fullName = function(){
+		return this.first_name + " " + this.last_name;
+	};
+};
+
+	var teacher1 = new Teacher({first_name: "Sarah", last_name: "Johnson"});
+
+Prototype: for every instance that you create you will have just one copy of the functions that will be referenced (storing references)
+
+
