@@ -1,0 +1,54 @@
+jQuery 
+- gives us a way to select things and manipulate them 
+
+
+.class
+#id
+
+How to check for jQuery
+- $() on dev tools console
+
+Search 
+$('li.student')
+        ^
+  CSS Selector
+  
+Find specific object
+student1 = $('li.student')[0]
+$(student1) - now student1 is a jQuery object
+
+if you look for something in jQuery and it doesnt exist, it wont error out, it will give you: []
+
+Example:
+
+var makeRyuFight = function(){
+$('#ryu').html('img src="http://1.gif") 
+$('#ryu img').hover(function(){
+  this.src = "http://2.gif"}, 
+  function(){
+  this.src = "http://1.com"
+  }); 
+  
+  
+$('#ryu img').mousedown(function(){
+  $('#ryu').append('<img class="hadouken" src= "http://3.gif")
+}),
+
+
+$('#ryu img').mousedown(function(){
+  $('.hadouken').animate({
+    "margin-left": "600px"
+    }, 1000, 'swing', function(){
+    this.remove():
+    }),
+    
+  $('watch-out').get(0).play();
+    
+});
+
+};
+
+
+$(document).('ready', function(){
+  makeRyuFight();
+})
