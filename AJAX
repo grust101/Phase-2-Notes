@@ -1,0 +1,30 @@
+AJAX lecture: 
+
+
+Classic web application communiction model
+
+  Client -->---> Http Request (w/ SESSION COOKIE 1) ---->--> Server
+  ^                                                       |
+  ^                                                       |
+  |                                                       |
+   <------<----+Server Response JS + HTML +CSS +----<-----<
+   
+   
+   
+   
+   
+Client -->---> Http Request (w/ SESSION COOKIE 1) ---->--> Server
+  ^                                                       |
+  ^                                                       |
+  |                                                       |
+   <------<----+Server Response JS + HTML +CSS +----<-----<
+   
+     JS calls ------> |AJAX ENGINE|---> Http Request --> Server
+  ^                   |           |                         |
+  ^                   |AJAX ENGINE|                         |
+  |                   |           |                         |
+   <---- HTML +CSS <--|AJAX ENGINE| +----<Server Response-----<
+   
+   
+   
+   
